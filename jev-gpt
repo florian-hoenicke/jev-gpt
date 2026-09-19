@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""jev-gpt <prompt>: text from jev, a classifier. Every word is a cascade of typed choices over a 60k-word tree."""
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
+import generate as g
+
+if len(sys.argv) < 2: sys.exit("usage: jev-gpt <prompt>")
+g.set_task(" ".join(sys.argv[1:]))
+print(g.beam("", 25)[0][1])
